@@ -1,11 +1,15 @@
 package org.example.models;
 
-import java.time.DateTimeException;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 public class Sale {
+    private Long id;
     private Integer num;
-    private Integer total;
-  SalesProduct salesProduct;
-  LocalDateTime localDateTime;
+    private BigDecimal total;
+    List<SalesItem>salesItems;
+    LocalDateTime localDateTime;
+
 }
