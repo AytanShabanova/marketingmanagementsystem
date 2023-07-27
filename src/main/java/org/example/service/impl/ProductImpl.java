@@ -1,10 +1,8 @@
 package org.example.service.impl;
 
-import org.example.models.Catagory;
 import org.example.models.Product;
 import org.example.service.inter.ProductInter;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public BigDecimal updateProductByPrice(String barCode, BigDecimal price) {
+    public Integer updateProductByPrice(String barCode, Integer price) {
       Product product1= products.stream().filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
    product1.setPrice(price);
       return   product1.getPrice() ;
@@ -48,7 +46,21 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public void getProductByPrice() {
-
+    public void getProductByPrice(String barCode ,Integer min,Integer max) {
+        ProductImpl productimpl=new ProductImpl();
+        if (!(productimpl.getProductByBarCode(barCode) ==null)) {
+            for (Product product : products) {
+                if (product.getPrice() > min && product.getPrice() < max) {
+                    System.out.println(product);
+                }
+            }
+        }
     }
+
+    @Override
+    public Product getProductByBarCode(String barCode) {
+     Product product1=  products.stream().filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
+     return product1;
+    }
+
 }
