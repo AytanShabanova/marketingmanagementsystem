@@ -34,8 +34,10 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public void getProduct(List<Product> productss) {
-      products.stream().forEach(product -> System.out.println(productss));
+    public List<Product> getProduct() {
+     List<Product>productList=products;
+     productList.stream().forEach(product -> System.out.println(product));
+     return productList;
 
     }
 
@@ -61,6 +63,12 @@ public class ProductImpl implements ProductInter {
     public Product getProductByBarCode(String barCode) {
      Product product1=  products.stream().filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
      return product1;
+    }
+
+    @Override
+    public void searchProductByName(String name) {
+
+      products.stream().filter(product -> product.getName().equals(name)).forEach(product -> System.out.println(product));
     }
 
 }
