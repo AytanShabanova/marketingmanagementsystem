@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.example.models.Catagory;
 import org.example.models.Product;
 import org.example.service.inter.ProductInter;
 
@@ -17,6 +18,7 @@ public class ProductImpl implements ProductInter {
     public Double updateProductByPrice(String barCode, Double price) {
       Product product1= products.stream().filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
    product1.setPrice(price);
+        System.out.println(product1);
       return   product1.getPrice() ;
     }
 
@@ -34,7 +36,7 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public List<Product> getProduct() {
+    public List<Product> getAllProduct() {
      List<Product>productList=products;
      productList.stream().forEach(product -> System.out.println(product));
      return productList;
@@ -42,8 +44,8 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public void getCatagoryProduct(String catagory) {
-  products.stream().filter(product -> product.getCatagory().equals(catagory)).forEach(product -> System.out.println(products));
+    public void getProductByCatagory(Catagory catagory) {
+  products.stream().filter(product -> product.getCatagory().equals(catagory)).forEach(product -> System.out.println(product));
 
     }
 

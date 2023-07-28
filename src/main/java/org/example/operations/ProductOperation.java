@@ -21,11 +21,11 @@ public class ProductOperation {
        int count= sc.nextInt();
        System.out.println("Enter barcode");
        String barCode= sc.next();
-       System.out.println("ENTER PRODUCT CATEGORY\n " +
+       System.out.println("  ENTER PRODUCT CATEGORY\n " +
                "1.MEAT_PRODUCTS \n" +
-               "2.DRINK" +
-               "3.BEVERAGE_PRODUCTS" +
-               "4.FLOUR_PRODUCTS" +
+               "2.DRINK \n" +
+               "3.BEVERAGE_PRODUCTS \n" +
+               "4.FLOUR_PRODUCTS \n" +
                "5.SEAFOOD");
        int countctg=sc.nextInt();
        if (countctg==1){
@@ -57,6 +57,64 @@ public class ProductOperation {
        }
 
 
+   }
+   public void updateProductByPriceOperation(){
+       System.out.println("ENTER PRODUCT BARCODE");
+       String barCode= sc.next();
+       System.out.println("ENTER NEW PRICE");
+       Double price= sc.nextDouble();
+       productImpl.updateProductByPrice(barCode,price);
+   }
+   public void updateProductByCountOperation(){
+       System.out.println("ENTER PRODUCT BARCODE");
+       String barCode=sc.next();
+       System.out.println("ENTER NEW COUNT");
+       Integer count=sc.nextInt();
+       productImpl.updateProductByCount(barCode,count);
+   }
+   public void removeProductOperation(){
+       System.out.println("ENTER PRODUCT BARCODE");
+       String barcode=sc.next();
+       productImpl.removeProduct(barcode);
+   }
+   public void getAllProductOperation(){
+       productImpl.getAllProduct();
+   }
+   public void getProductByCatagory(){
+       System.out.println("  ENTER PRODUCT CATEGORY\n " +
+               "1.MEAT_PRODUCTS \n" +
+               "2.DRINK \n" +
+               "3.BEVERAGE_PRODUCTS \n" +
+               "4.FLOUR_PRODUCTS \n" +
+               "5.SEAFOOD");
+       int count=sc.nextInt();
+       switch (count){
+           case 1:productImpl.getProductByCatagory(Catagory.MEAT_PRODUCTS);
+           break;
+           case 2:productImpl.getProductByCatagory(Catagory.DRINK);
+           break;
+           case 3:productImpl.getProductByCatagory(Catagory.BEVERAGE_PRODUCTS);
+           break;
+           case 4:productImpl.getProductByCatagory(Catagory.FLOUR_PRODUCTS);
+           break;
+           case 5:productImpl.getProductByCatagory(Catagory.SEAFOOD);
+           break;
+       }
+
+   }
+   public void getProductByPrice(){
+       System.out.println("ENTER PRODUCT BARCODE");
+       String barCode=sc.next();
+       System.out.println("ENTER MIN PRICE");
+       Integer min=sc.nextInt();
+       System.out.println("ENTER MAX PRICE");
+       Integer max=sc.nextInt();
+       productImpl.getProductByPrice(barCode,min,max);
+   }
+   public void getProductByName(){
+       System.out.println("ENTER PRODUCT NAME");
+       String name= sc.next();
+       productImpl.searchProductByName(name);
    }
 
 }
