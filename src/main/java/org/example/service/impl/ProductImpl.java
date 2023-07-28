@@ -14,7 +14,7 @@ public class ProductImpl implements ProductInter {
     }
 
     @Override
-    public Integer updateProductByPrice(String barCode, Integer price) {
+    public Double updateProductByPrice(String barCode, Double price) {
       Product product1= products.stream().filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
    product1.setPrice(price);
       return   product1.getPrice() ;

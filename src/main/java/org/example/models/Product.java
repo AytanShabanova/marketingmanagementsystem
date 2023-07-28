@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Product {
     private Long id;
     private String name;
-    private Integer price;
+    private Double price;
     private Catagory catagory;
     private Integer count;
     private String barCode;

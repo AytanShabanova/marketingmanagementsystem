@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductInter {
     void  addProduct(Product product);
-    Integer updateProductByPrice(String barCode, Integer price);
+    Double updateProductByPrice(String barCode, Double price);
     Integer updateProductByCount(String barCode,Integer count);
     void  removeProduct(String barCode);
     List<Product> getProduct();
