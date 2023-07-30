@@ -21,7 +21,7 @@ public class SaleOperation {
     static  long idSaleItem=0;
     Scanner sc=new Scanner(System.in);
 
-    public void addNewSaleOperation(){
+    public void addNewSaleOp1(){
         System.out.println("ENTER SALE NUM");
         Integer num=sc.nextInt();
         System.out.println("ENTER TOTAL");
@@ -69,7 +69,7 @@ public class SaleOperation {
         Sale sale=new Sale(id++,num,total,salesItems, LocalDateTime.now());
         saleImpl.addNewSale(sale);
     }
-    public void addSaleOperation2(){
+    public void addSaleOp2(){
         System.out.println("ENTER SALE NUM");
         Integer num=sc.nextInt();
         System.out.println("ENTER SALE ITEM");
@@ -84,17 +84,17 @@ public class SaleOperation {
                .filter(product -> product.getBarCode().equals(barCode)).findFirst().get();
 
         SalesItem salesItem=new SalesItem(idSaleItem++,num1,product1,count);
-       int totalInt= salesItem.getProduct().getPrice().intValue()*count;
-       BigDecimal tottal=new BigDecimal(totalInt);
-
-       List<SalesItem>salesItems=new ArrayList<>();
+       BigDecimal bigDecimal= salesItem.getProduct().getPrice();
+        double v = bigDecimal.doubleValue() * count;
+        BigDecimal bigDecimal1=new BigDecimal(v);
+        List<SalesItem>salesItems=new ArrayList<>();
        salesItems.add(salesItem);
-       Sale sale=new Sale(id++,num,tottal,salesItems,LocalDateTime.now());
+       Sale sale=new Sale(id++,num,bigDecimal1,salesItems,LocalDateTime.now());
        saleImpl.addNewSale(sale);
 
 
     }
-    public void returnProduct(){
+    public void returnProductOp(){
         System.out.println("ENTER SALENUM");
         Integer saleNum= sc.nextInt();
         System.out.println("ENTER PRODUCT BARCODE");
@@ -104,29 +104,29 @@ public class SaleOperation {
         saleImpl.returnProduct(saleNum,barCode,count);
         System.out.println("THE OPERATION WAS EXECUTED");
     }
-    public void removeSale(){
+    public void removeSaleOp(){
         System.out.println("ENTER SALE NUM");
         Integer saleNum=sc.nextInt();
         saleImpl.removeSale(saleNum);
     }
-    public void getAllSales(){
+    public void getAllSalesOp(){
         saleImpl.getAllSales();
     }
-    public void saleByPrice(){
+    public void saleByPriceOp(){
         System.out.println("ENTER MIN PRICE");
         BigDecimal minPrice=sc.nextBigDecimal();
         System.out.println("ENTER MAX PRICE");
         BigDecimal maxPrice=sc.nextBigDecimal();
         saleImpl.saleByPrice(minPrice,maxPrice);
     }
-    public void getSaleByDate(){
+    public void getSaleByDateOp(){
         System.out.println("ENTER DATE :"+"yyyy-MM-ddTHH:mm:ss" );
        String date= sc.next();
        LocalDateTime localDateTime= LocalDateTime.parse(date);
        saleImpl.getSalesByDate(localDateTime);
 
     }
-    public void getSaleBYNum(){
+    public void getSaleBYNumOp(){
         System.out.println("ENTER SALE NUMBER");
         Integer num=sc.nextInt();
         saleImpl.getSaleByNum(num);

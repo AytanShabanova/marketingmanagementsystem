@@ -4,11 +4,12 @@ import org.example.models.Catagory;
 import org.example.models.Product;
 
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductInter {
     void  addProduct(Product product);
-    Double updateProductByPrice(String barCode, Double price);
+    BigDecimal updateProductByPrice(String barCode,BigDecimal price);
     Integer updateProductByCount(String barCode,Integer count);
     void  removeProduct(String barCode);
     List<Product> getAllProduct();

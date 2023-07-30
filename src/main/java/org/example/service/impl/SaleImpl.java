@@ -16,6 +16,7 @@ public class SaleImpl implements SaleInter {
     @Override
     public void addNewSale(Sale sale) {
         sales.add(sale);
+        System.out.println(sale);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class ProductOperation {
     static Scanner sc=new Scanner(System.in);
 
 
-   public void addProductOperation(){
+   public void addProductOp(){
        System.out.println("ENTER PRODUCT NAME");
        String name=sc.next();
        System.out.println("ENTER PRODUCT PRICE");
@@ -63,7 +63,7 @@ public class ProductOperation {
        System.out.println("ENTER PRODUCT BARCODE");
        String barCode= sc.next();
        System.out.println("ENTER NEW PRICE");
-       Double price= sc.nextDouble();
+      BigDecimal price=sc.nextBigDecimal();
        productImpl.updateProductByPrice(barCode,price);
    }
    public void updateProductByCountOperation(){
@@ -82,8 +82,8 @@ public class ProductOperation {
        productImpl.getAllProduct();
    }
    public void getProductByCatagory(){
-       System.out.println("  ENTER PRODUCT CATEGORY\n " +
-               "1.MEAT_PRODUCTS \n" +
+       System.out.println(" ENTER PRODUCT CATEGORY\n"+
+               "1.MEAT_PRODUCTS\n" +
                "2.DRINK \n" +
                "3.BEVERAGE_PRODUCTS \n" +
                "4.FLOUR_PRODUCTS \n" +
