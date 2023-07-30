@@ -4,6 +4,7 @@ import org.example.models.Catagory;
 import org.example.models.Product;
 import org.example.service.impl.ProductImpl;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ProductOperation {
@@ -16,7 +17,7 @@ public class ProductOperation {
        System.out.println("ENTER PRODUCT NAME");
        String name=sc.next();
        System.out.println("ENTER PRODUCT PRICE");
-      Double price= sc.nextDouble();
+      BigDecimal price= sc.nextBigDecimal();
        System.out.println("ENTER COUNT");
        int count= sc.nextInt();
        System.out.println("Enter barcode");
