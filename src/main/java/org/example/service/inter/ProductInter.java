@@ -9,14 +9,14 @@ import java.util.List;
 
 public interface ProductInter {
     void  addProduct(Product product);
-    BigDecimal updateProductByPrice(String barCode,BigDecimal price);
-    Integer updateProductByCount(String barCode,Integer count);
+    Product updateProductByPrice(String barCode,BigDecimal price);
+   Product updateProductByCount(String barCode,Integer count);
     void  removeProduct(String barCode);
     List<Product> getAllProduct();
     void getProductByCatagory(Catagory catagory );
-    void getProductByPrice(String barCode ,Integer min,Integer max);
+    List<Product> getProductByPrice(Double min,Double max);
     Product getProductByBarCode(String barCode);
-    void searchProductByName(String name);
+    Product searchProductByName(String name);
 
 
 }

@@ -10,9 +10,9 @@ public interface SaleInter {
       void addNewSale(Sale sale);
       void returnProduct(Integer saleNum,String productBarCode,Integer count);
       void removeSale(Integer saleNum);
-      void getAllSales();
+      List<Sale> getAllSales();
    List<Sale> saleByPrice(BigDecimal min,BigDecimal max);
-   void getSalesByDate(LocalDateTime localDateTime);
+   Sale getSalesByDate(LocalDateTime localDateTime);
   Sale getSaleByNum(Integer num);
 
 }

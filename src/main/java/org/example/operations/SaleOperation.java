@@ -8,7 +8,7 @@ import org.example.service.impl.ProductImpl;
 import org.example.service.impl.SaleImpl;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +91,7 @@ public class SaleOperation {
        salesItems.add(salesItem);
        Sale sale=new Sale(id++,num,bigDecimal1,salesItems,LocalDateTime.now());
        saleImpl.addNewSale(sale);
+        System.out.println(sale);
 
 
     }
@@ -110,7 +111,9 @@ public class SaleOperation {
         saleImpl.removeSale(saleNum);
     }
     public void getAllSalesOp(){
-        saleImpl.getAllSales();
+
+      List<Sale>saleList=  saleImpl.getAllSales();
+        System.out.println(saleList);
     }
     public void saleByPriceOp(){
         System.out.println("ENTER MIN PRICE");
@@ -123,13 +126,15 @@ public class SaleOperation {
         System.out.println("ENTER DATE :"+"yyyy-MM-ddTHH:mm:ss" );
        String date= sc.next();
        LocalDateTime localDateTime= LocalDateTime.parse(date);
-       saleImpl.getSalesByDate(localDateTime);
+      Sale sale= saleImpl.getSalesByDate(localDateTime);
+        System.out.println(sale);
 
     }
     public void getSaleBYNumOp(){
         System.out.println("ENTER SALE NUMBER");
         Integer num=sc.nextInt();
-        saleImpl.getSaleByNum(num);
+       Sale sale= saleImpl.getSaleByNum(num);
+        System.out.println(sale);
 
     }
 

@@ -5,6 +5,7 @@ import org.example.models.Product;
 import org.example.service.impl.ProductImpl;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductOperation {
@@ -64,14 +65,16 @@ public class ProductOperation {
        String barCode= sc.next();
        System.out.println("ENTER NEW PRICE");
       BigDecimal price=sc.nextBigDecimal();
-       productImpl.updateProductByPrice(barCode,price);
+      Product product= productImpl.updateProductByPrice(barCode,price);
+       System.out.println(product);
    }
    public void updateProductByCountOperation(){
        System.out.println("ENTER PRODUCT BARCODE");
        String barCode=sc.next();
        System.out.println("ENTER NEW COUNT");
        Integer count=sc.nextInt();
-       productImpl.updateProductByCount(barCode,count);
+      Product product= productImpl.updateProductByCount(barCode,count);
+       System.out.println(product);
    }
    public void removeProductOperation(){
        System.out.println("ENTER PRODUCT BARCODE");
@@ -79,7 +82,8 @@ public class ProductOperation {
        productImpl.removeProduct(barcode);
    }
    public void getAllProductOperation(){
-       productImpl.getAllProduct();
+      List<Product>productList= productImpl.getAllProduct();
+       System.out.println(productList);
    }
    public void getProductByCatagory(){
        System.out.println(" ENTER PRODUCT CATEGORY\n"+
@@ -104,18 +108,19 @@ public class ProductOperation {
 
    }
    public void getProductByPrice(){
-       System.out.println("ENTER PRODUCT BARCODE");
-       String barCode=sc.next();
+
        System.out.println("ENTER MIN PRICE");
-       Integer min=sc.nextInt();
+       Double min=sc.nextDouble();
        System.out.println("ENTER MAX PRICE");
-       Integer max=sc.nextInt();
-       productImpl.getProductByPrice(barCode,min,max);
+       Double max=sc.nextDouble();
+       productImpl.getProductByPrice(min,max);
    }
    public void getProductByName(){
        System.out.println("ENTER PRODUCT NAME");
        String name= sc.next();
-       productImpl.searchProductByName(name);
+    Product product= productImpl.searchProductByName(name);
+       System.out.println(product);
+
    }
 
 }
