@@ -50,7 +50,7 @@ public class ProductImpl implements ProductInter {
 
     @Override
     public void getProductByCatagory(Catagory catagory) {
-        products.stream().filter(product -> product.getCatagory().equals(catagory)).forEach(product -> System.out.println(product));
+        products.stream().filter(product -> product.getCatagory().equals(catagory)).forEach(product -> System.out.print(product));
 
     }
 

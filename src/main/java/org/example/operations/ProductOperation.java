@@ -21,7 +21,7 @@ public class ProductOperation {
       BigDecimal price= sc.nextBigDecimal();
        System.out.println("ENTER COUNT");
        int count= sc.nextInt();
-       System.out.println("Enter barcode");
+       System.out.println("ENTER BARCODE");
        String barCode= sc.next();
        System.out.println("  ENTER PRODUCT CATEGORY\n " +
                "1.MEAT_PRODUCTS \n" +
@@ -83,7 +83,7 @@ public class ProductOperation {
    }
    public void getAllProductOperation(){
       List<Product>productList= productImpl.getAllProduct();
-       System.out.println(productList);
+       System.out.print(productList);
    }
    public void getProductByCatagory(){
        System.out.println(" ENTER PRODUCT CATEGORY\n"+
@@ -113,7 +113,8 @@ public class ProductOperation {
        Double min=sc.nextDouble();
        System.out.println("ENTER MAX PRICE");
        Double max=sc.nextDouble();
-       productImpl.getProductByPrice(min,max);
+     List<Product>productList=  productImpl.getProductByPrice(min,max);
+       System.out.print(productList);
    }
    public void getProductByName(){
        System.out.println("ENTER PRODUCT NAME");

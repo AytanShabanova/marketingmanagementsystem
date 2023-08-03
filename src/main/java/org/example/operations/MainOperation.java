@@ -90,7 +90,14 @@ public class MainOperation {
                 case 3:
                     System.exit(1);
                     break;
+                default:
+                    try {
+                        throw  new Exception("ENTER CHOCICE CORRECT"){
 
+                        };
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
             }
 
         }
