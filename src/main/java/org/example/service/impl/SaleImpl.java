@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.example.models.Product;
 import org.example.models.Sale;
 import org.example.models.SalesItem;
 import org.example.service.inter.SaleInter;
@@ -14,7 +15,17 @@ public class SaleImpl implements SaleInter {
     public static List<Sale> sales = new ArrayList<>();
 
     @Override
-    public void addNewSale(Sale sale) {
+    public void addNewSale(Sale sale ) {
+      List<SalesItem>salesItems=  sale.getSalesItems();
+      ProductImpl product=new ProductImpl();
+      salesItems.stream().forEach(salesItem -> {
+      Product product1= product.getProductByBarCode(salesItem.getProduct().getBarCode()) ;
+      product1.setCount(product1.getCount()-salesItem.getCount());
+       product.removeProduct(product1.getBarCode());
+       product.addProduct(product1);
+
+
+      });
         sales.add(sale);
 
     }
@@ -24,12 +35,16 @@ public class SaleImpl implements SaleInter {
         Sale sale1 = sales.stream().filter(sale -> sale.getNum().equals(saleNum)).findFirst().get();
         SalesItem salesItem1 = sale1.getSalesItems()
                 .stream().filter(salesItem -> salesItem.getProduct().getBarCode().equals(productBarCode)).findFirst().get();
-        salesItem1.getProduct().setCount(salesItem1.getProduct().getCount()+count);
-        if (salesItem1.getCount()==count){
-        sale1.getSalesItems().remove(salesItem1);
+        salesItem1.getProduct().setCount(salesItem1.getProduct().getCount() + count);
+        if (salesItem1.getCount().equals(count)) {
+            sale1.getSalesItems().remove(salesItem1);
+        } else if (salesItem1.getCount().equals(count) && sale1.getSalesItems().size() == 1) {
+            sales.remove(sale1);
+
+
         } else {
             sale1.getSalesItems().remove(salesItem1);
-            salesItem1.setCount(salesItem1.getCount()-count);
+            salesItem1.setCount(salesItem1.getCount() - count);
             sale1.getSalesItems().add(salesItem1);
 
         }
@@ -44,20 +59,20 @@ public class SaleImpl implements SaleInter {
 
     @Override
     public List<Sale> getAllSales() {
-      List<Sale>saleList=  sales.stream().toList();
-      return saleList;
+        List<Sale> saleList = sales.stream().toList();
+        return saleList;
     }
 
     @Override
     public List<Sale> saleByPrice(BigDecimal min, BigDecimal max) {
-    List<Sale>saleList= sales.stream().filter(sale -> 1==sale.getTotal().compareTo(min) && sale.getTotal().compareTo(max)==-1).toList();
-       return saleList;
+        List<Sale> saleList = sales.stream().filter(sale -> 1 == sale.getTotal().compareTo(min) && sale.getTotal().compareTo(max) == -1).toList();
+        return saleList;
     }
 
     @Override
     public Sale getSalesByDate(LocalDateTime localDateTime) {
         Sale sale1 = sales.stream().filter(sale -> sale.getLocalDateTime().equals(localDateTime)).findFirst().get();
-       return sale1;
+        return sale1;
     }
 
     @Override

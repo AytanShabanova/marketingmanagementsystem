@@ -60,7 +60,7 @@ public class SaleOperation {
         Integer countSaleItem=sc.nextInt();
 
 
-       // Product product=new Product(idProduct++,name,price,catagory,count,barCode);
+
         Product product=Product.builder().id(idProduct++).name(name).price(price).catagory(catagory).barCode(barCode).build();
 
         SalesItem salesItem=new SalesItem(idSaleItem++,num1,product,countSaleItem);
