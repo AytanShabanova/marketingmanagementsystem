@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MainOperation {
   static   ProductOperation productOperation = new ProductOperation();
+
   static   SaleOperation saleOperation = new SaleOperation();
     static Scanner sc = new Scanner(System.in);
 
@@ -27,18 +28,22 @@ public class MainOperation {
                     switch (choice) {
                         case 1:
                             productOperation.addProductOp();
+
                             break;
                         case 2:
                             System.out.println(" 1.UPDATE PRODUCT BY PRICE \n 2.UPDATE PRODUCT BY COUNT");
                             choice = sc.nextInt();
                             if (choice == 1) {
                                 productOperation.updateProductByPriceOperation();
+
                             } else if (choice == 2) {
                                 productOperation.updateProductByCountOperation();
+
                             }
                             break;
                         case 3:
-                            productOperation.removeProductOperation();
+                           productOperation.removeProductOperation();
+
                             break;
                         case 4:
                             productOperation.getAllProductOperation();

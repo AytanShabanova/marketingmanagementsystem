@@ -13,7 +13,7 @@ public interface ProductInter {
    Product updateProductByCount(String barCode,Integer count);
     void  removeProduct(String barCode);
     List<Product> getAllProduct();
-    void getProductByCatagory(Catagory catagory );
+    List<Product> getProductByCatagory(Catagory catagory );
     List<Product> getProductByPrice(Double min,Double max);
     Product getProductByBarCode(String barCode);
     Product searchProductByName(String name);
